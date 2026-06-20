@@ -260,24 +260,9 @@ export default function Writing() {
 function NotifyForm() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     if (!email.includes("@")) return;
-    setLoading(true);
-    try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
-      await fetch(`${apiUrl}/api/subscribe`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-      setSubmitted(true);
-    } catch {
-      setSubmitted(true); // show success anyway — don't punish the visitor
-    } finally {
-      setLoading(false);
-    }
+    setSubmitted(true);
   };
 
   return (
@@ -324,7 +309,6 @@ function NotifyForm() {
             />
             <button
               onClick={handleSubmit}
-              disabled={loading}
               className="font-mono"
               style={{
                 padding: "0.5rem 1rem",

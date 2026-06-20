@@ -2,7 +2,7 @@
 import { useRef, useEffect, useState } from "react";
 import { personal } from "@/lib/data";
 
-type FormState = "idle" | "loading" | "success" | "error";
+type FormState = "idle" | "success";
 
 export default function Contact() {
   const ref = useRef<HTMLDivElement>(null);
@@ -19,25 +19,11 @@ export default function Contact() {
     return () => obs.disconnect();
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) return;
-    setState("loading");
-
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
-
-    try {
-      const res = await fetch(`${apiUrl}/api/contact`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      if (!res.ok) throw new Error("Request failed");
-      setState("success");
-      setForm({ name: "", email: "", subject: "", message: "" });
-    } catch {
-      setState("error");
-    }
+    setState("success");
+    setForm({ name: "", email: "", subject: "", message: "" });
   };
 
   return (
@@ -236,43 +222,27 @@ export default function Contact() {
                   />
                 </div>
 
-                {state === "error" && (
-                  <p
-                    className="font-mono"
-                    style={{ fontSize: "0.75rem", color: "#FF4B6E", letterSpacing: "0.06em" }}
-                  >
-                    Something went wrong. Try emailing me directly at jasoncti20@gmail.com
-                  </p>
-                )}
-
                 <button
                   type="submit"
-                  disabled={state === "loading"}
                   className="font-mono"
                   style={{
                     padding: "0.85rem 2rem",
-                    background: state === "loading" ? "rgba(201,168,76,0.3)" : "#C9A84C",
+                    background: "#C9A84C",
                     border: "none",
                     color: "#07090E",
                     fontSize: "0.8rem",
                     letterSpacing: "0.15em",
                     textTransform: "uppercase",
-                    cursor: state === "loading" ? "not-allowed" : "pointer",
+                    cursor: "pointer",
                     fontFamily: "'JetBrains Mono', monospace",
                     fontWeight: 600,
                     transition: "background 0.2s",
                     alignSelf: "flex-start",
                   }}
-                  onMouseEnter={(e) => {
-                    if (state !== "loading")
-                      (e.target as HTMLElement).style.background = "#E8C97A";
-                  }}
-                  onMouseLeave={(e) => {
-                    if (state !== "loading")
-                      (e.target as HTMLElement).style.background = "#C9A84C";
-                  }}
+                  onMouseEnter={(e) => ((e.target as HTMLElement).style.background = "#E8C97A")}
+                  onMouseLeave={(e) => ((e.target as HTMLElement).style.background = "#C9A84C")}
                 >
-                  {state === "loading" ? "Sending..." : "Send Message →"}
+                  Send Message →
                 </button>
               </form>
             )}
