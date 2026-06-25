@@ -24,17 +24,10 @@ export default function Writing() {
     <section
       id="writing"
       ref={ref}
-      style={{ padding: "8rem 2rem", maxWidth: "1200px", margin: "0 auto" }}
+      className="px-6 py-16 md:px-8 md:py-24 lg:py-32"
+      style={{ maxWidth: "1200px", margin: "0 auto" }}
     >
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "5rem",
-          alignItems: "start",
-        }}
-        className="grid grid-cols-1 lg:grid-cols-2 gap-16"
-      >
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-start">
         {/* Left: intro */}
         <div
           style={{
@@ -289,7 +282,7 @@ function NotifyForm() {
           >
             Get notified when stories are published →
           </p>
-          <div style={{ display: "flex", gap: "0.5rem" }}>
+          <div className="flex flex-col sm:flex-row" style={{ gap: "0.5rem" }}>
             <input
               type="email"
               value={email}
@@ -305,13 +298,14 @@ function NotifyForm() {
                 fontSize: "0.8rem",
                 outline: "none",
                 fontFamily: "'JetBrains Mono', monospace",
+                minWidth: 0,
               }}
             />
             <button
               onClick={handleSubmit}
               className="font-mono"
               style={{
-                padding: "0.5rem 1rem",
+                padding: "0.5rem 1.25rem",
                 background: "#C9A84C",
                 border: "none",
                 color: "#07090E",
@@ -321,6 +315,7 @@ function NotifyForm() {
                 cursor: "pointer",
                 fontFamily: "'JetBrains Mono', monospace",
                 fontWeight: 600,
+                whiteSpace: "nowrap",
               }}
             >
               Notify

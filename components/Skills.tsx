@@ -30,8 +30,8 @@ export default function Skills() {
     <section
       id="skills"
       ref={ref}
+      className="px-6 py-14 md:px-8 md:py-20 lg:py-24"
       style={{
-        padding: "6rem 2rem",
         background: "rgba(13, 16, 25, 0.5)",
         borderTop: "1px solid rgba(201,168,76,0.08)",
         borderBottom: "1px solid rgba(201,168,76,0.08)",

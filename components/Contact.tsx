@@ -30,8 +30,8 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
+      className="px-6 py-16 md:px-8 md:py-24 lg:py-32"
       style={{
-        padding: "8rem 2rem",
         position: "relative",
         overflow: "hidden",
       }}
@@ -78,15 +78,7 @@ export default function Contact() {
           </h2>
         </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1.4fr",
-            gap: "5rem",
-            alignItems: "start",
-          }}
-          className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-16"
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-10 lg:gap-20 items-start">
           {/* Left: info */}
           <div
             style={{
@@ -167,7 +159,7 @@ export default function Contact() {
                 onSubmit={handleSubmit}
                 style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
               >
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <FormField
                     label="Name *"
                     type="text"

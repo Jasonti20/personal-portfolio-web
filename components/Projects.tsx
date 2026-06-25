@@ -19,8 +19,8 @@ export default function Projects() {
     <section
       id="projects"
       ref={ref}
+      className="px-6 py-16 md:px-8 md:py-24 lg:py-32"
       style={{
-        padding: "8rem 2rem",
         background: "rgba(13, 16, 25, 0.5)",
         borderTop: "1px solid rgba(201,168,76,0.08)",
         borderBottom: "1px solid rgba(201,168,76,0.08)",
@@ -56,7 +56,7 @@ export default function Projects() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 300px), 1fr))",
             gap: "1.5rem",
           }}
         >

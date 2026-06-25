@@ -19,17 +19,10 @@ export default function About() {
     <section
       id="about"
       ref={ref}
-      style={{ padding: "8rem 2rem", maxWidth: "1200px", margin: "0 auto" }}
+      className="px-6 py-16 md:px-8 md:py-24 lg:py-32"
+      style={{ maxWidth: "1200px", margin: "0 auto" }}
     >
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "6rem",
-          alignItems: "start",
-        }}
-        className="grid grid-cols-1 lg:grid-cols-2 gap-16"
-      >
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 items-start">
         {/* Left: bio */}
         <div
           style={{
